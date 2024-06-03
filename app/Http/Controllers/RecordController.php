@@ -10,7 +10,8 @@ class RecordController extends Controller
 {
     public function index()
     {
-        $records = Record::where('user_id', auth()->id())->get();
+        // $records = Record::where('user_id', auth()->id())->get();
+        $records = Record::orderBy('id', 'DESC')->paginate(10);
         return view('records.index', compact('records'));
     }
 
